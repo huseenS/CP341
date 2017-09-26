@@ -1,0 +1,11 @@
+What is Moore's Law and why is it relevant to computing?
+What is the significance of processor clock speed? If we measure processor computational power as FLOPS, how could a 500 Mhz processor out perform a 1 Ghz processor?
+What are some ways we might measure and compare computer capability? List FLOPS and two options, discuss strengths/weaknesses of each.
+
+Moore's Law comes from Gordon Moore observing that the number of transistors integrated into a silicon chip will double every year. This essentially means that the processing power of chips doubles leading to computing becoming more relevant in our everyday lives.
+
+
+Processor clock speed is directly tied to the speed at which instructions can be perfomed and so an incerease in clock speed--epscially during the megahertz era where clock rates doubled at about the same rate as transistor density-- correaltes to increase in perfomance. A Mhz processor could outperfom a 1Ghz processor if it had mulitple cores utilizing parallelism. 
+
+FLOPS, SPEC2006 benchmarks, other cpu benchmarks. 
+
