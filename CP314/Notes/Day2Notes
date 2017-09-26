@@ -1,0 +1,60 @@
+mcscn.cs.coloradocollege.edu
+
+Memory Size:
+Clock speed
+troughput
+FLOPS
+power consumption
+flops/watts
+
+Throughput:
+	Intops
+	Network
+	bus speed
+	Iops
+
+Machine model:
+	Bandwith: Throughput
+	Latency: time it takes to transfer request
+
+Data Locality: Good use of memory bandwidth, and cache depends on data locality
+Good Data Locality: Break work into chunks-Working sets
+					Organize data structures to access data locally, avoid cache conflicts
+					avoid TLB misses, align data within cache lines
+
+Performance Theory:				
+Speedup: latency of program with one worker/latency on X number of workers
+Efficiency speedup/number of workers, measures return on hardware investment
+
+Work-Span model:
+	work: Time th7at a serialization of an algorithm would take--total time
+	Span: time a parallel algorithm would take on a machine with inifite # of processors
+	
+Amdahl's Law: Strong Scaling
+	effort expended on high parallel processing rates is wasted 
+	unless it is accompanied by achievements in sequential processing rates of nearly the same magnitude
+	so the execution time of a program falls into: time spent doing non parralelizable serial work
+	and time spent doing parallelizable work
+	T1 = Wset + Wpar
+	Tp>= Wset + Wpar/P
+	Speedup = T1/Tp
+
+Gustafson-Baris' Law: Weak Scaling
+	speedup should be measured by scaling the problem to the number of processors
+	not by fixing the problem size
+	
+Flyn's Characterization:
+	Single Instruction, Single Data:SISD--standard non-parallel processor
+	Single Instruction Multiple Data: SIMD--array processors
+	Multiple instruction, Single Data: MISD-not useful/ignored
+	Multiple Instruction, Multiple Data: MIMD:classic multi-core or cluster computer
+	GPU Vendor classification: SIMT: Single instruction, mulitiple threads
+	
+MCSCN:
+	Modules updates packages/dependencies and libraries 
+	Clips into shell, useful commands: hostname, module--help, load/unload,list, avail 
+	
+	
+		 
+	
+
