@@ -1,0 +1,31 @@
+1. Speed up measures the latency of a program with one worker over one with an arbitrary amount of workers.
+	 The ratio T1/TP where T1 is the time on one processor and Tp is the time using p processors.
+
+2. Efficiency is the speedup divided by the number of workers and it measures how effectively you use parallelism--the return on hardware investment.
+	
+3. Using the following task graph, where each task takes 5 seconds to complete:
+
+3a. The span is 3.
+
+3b. Expected run time for a single processor is 30seconds
+
+3c. Using two processors the expected speedup is 30/20 or 1.5
+	and expected efficiency is 1.5/2 or 75%
+	
+3d. Using four processors the expected speedup is 30/15 or 2
+	and expected efficiency is 2/4 or 50%
+
+3e. Using 10 processors the expected speed up is the same as 4 processors 30/15 or 2,
+	but efficiency is much worse at 2/10 or 20%
+
+3f. To get a 10x speedup, how much work must be added to the parallel region and how many processors would be required? What would the efficiency be?
+	To get a 10x speedup
+	
+
+4. A processor and memory module are 10 centimeters apart and connected by a bus with a data channel 256 bits wide. For simplicity assume the processor, bus, and memory operate at the same speed, 3 GHz. (This scenario is highly unrealistic; in most systems the processor and bus operate at significantly different frequencies)
+
+4a. The speed of light (3x10^8 m/s) sets a hard upper bound on how fast information can travel. If a processor performs a memory fetch, what is the minimum possible latency? Assume that only one cycle is required by the memory module to read the memory location (also highly unrealistic). Minimally, how many clock cycles must the CPU wait?
+	minimum possible latency is 1/10m
+	
+4b. What is the bandwidth between the processor and memory?
+	bandwidth = 3x10^9 * 256
