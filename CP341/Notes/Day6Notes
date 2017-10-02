@@ -1,0 +1,25 @@
+10/2/2017
+
+Some Shell Commands:
+
+	Fetch a file from a URL: 
+	wget <URL> <filename>
+	curl <URL> -o <filename>
+	interactive session on a compute node: srun -pty bash -i
+	which host: hostname
+
+Patterns for Performance:
+
+Map Pattern:
+	Break the work up so that it can run in parallel
+
+Data Reorganization/Locality:
+	Organizes the work so that less memory transfers are needed 
+	
+OSNAP Pin Recovery Tool:
+tool that can return pin # from a cryptographically hashed copy
+
+Crypto Hash: one way functions, output should appear random, Limited outputs-known finite length
+
+how might we undo:
+	brute force: for each possible pin compute hash and on match display pin

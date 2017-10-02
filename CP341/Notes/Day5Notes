@@ -1,0 +1,22 @@
+9/29
+
+Implementing Objects in C
+
+Object features:
+Constructors, fields, methods
+Struct features: fields, default values, 
+
+C struct: 
+create_thing(struct *s) {}
+
+Python constructors: def __init__(self);
+						self.x=5;
+					def getx(self);
+						return x;
+
+Operating on Files: Three standard C fucntions for operating on files--use man pages for documentation
+
+fprintf/fscanf: character data, format str
+fputs/fgets: character data, prints string given
+fread/fwrite: threadsafe, binary stream
+

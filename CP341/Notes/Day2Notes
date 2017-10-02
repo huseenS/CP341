@@ -27,8 +27,8 @@ Speedup: latency of program with one worker/latency on X number of workers
 Efficiency speedup/number of workers, measures return on hardware investment
 
 Work-Span model:
-	work: Time th7at a serialization of an algorithm would take--total time
-	Span: time a parallel algorithm would take on a machine with inifite # of processors
+	work: Time that a serialization of an algorithm would take--total time
+	Span: time a parallel algorithm would take on a machine with infinite # of processors
 	
 Amdahl's Law: Strong Scaling
 	effort expended on high parallel processing rates is wasted 

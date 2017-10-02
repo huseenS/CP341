@@ -1,0 +1,34 @@
+9/27
+
+Parallel Pitfalls/MCSCN Hardware
+
+Review: 
+
+Gustafson-Baris' Law: if the problem size increases with P while the serial portion grows slowly or remains fixed, speedup grows as workers are added.
+
+Style Guidelines:
+	indent with 4 spaces
+	open curly brace on same line, close curly brace on its own line
+	main returns int-exit code 0,-1,1 and takes two arguments, int argc(# of arguments), char**argv(Array of character arrays of arguments)
+
+Compiling:
+	Compile one  file at a time or introduce a shell script
+	OpenMP: gcc-fopenmp - o my_program my_program.c
+	
+Malloc/Realloc memory:
+ex: int a;
+	a=5
+	char* b;
+	b = malloc(sizeOf(char)*16)--16char array;
+
+Parallelization Pitfalls:
+	Race Conditions: 2x threads opening on same memory without proper synchronization
+	deadlock: due to the held and required lock, no thread can make progress--unlock threads in reverse order
+	Strangled  Scaling: locks can create unintended/unneeded bottleneck-becomes serial 
+	Lack Of locality: what the program needs isn't cached-temporal/spatial locality
+	Lack of Imbalance: Uneven distribution of work
+	Overhead: overhead increases work/span too much setup/tear down
+
+
+
+

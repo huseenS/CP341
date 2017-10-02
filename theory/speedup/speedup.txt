@@ -25,7 +25,7 @@
 4. A processor and memory module are 10 centimeters apart and connected by a bus with a data channel 256 bits wide. For simplicity assume the processor, bus, and memory operate at the same speed, 3 GHz. (This scenario is highly unrealistic; in most systems the processor and bus operate at significantly different frequencies)
 
 4a. The speed of light (3x10^8 m/s) sets a hard upper bound on how fast information can travel. If a processor performs a memory fetch, what is the minimum possible latency? Assume that only one cycle is required by the memory module to read the memory location (also highly unrealistic). Minimally, how many clock cycles must the CPU wait?
-	minimum possible latency is 1/10m
+	minimum possible latency is 1/10m, takes a minimum of 3 clock cycle, one to fetch, one for the memory bus, one to returns
 	
 4b. What is the bandwidth between the processor and memory?
 	bandwidth = 3x10^9 * 256
