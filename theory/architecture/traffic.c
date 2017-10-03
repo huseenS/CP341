@@ -71,7 +71,6 @@ int main(int argc, char** argv) {
 		year = parse_line(line);
 		node = list_find(out_list, year);
 		node->stops++;
-		printf("node %s, count %d, next: %p\n", node->year, node->stops, node->next);
 	}
 
 	fclose(f);
