@@ -1,4 +1,4 @@
 #! /bin/bash
 
 # compile traffic.c
-gcc -o traffic_c traffic.c
+gcc -g -o traffic_c traffic.c

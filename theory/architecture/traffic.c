@@ -21,6 +21,7 @@ lr_node* list_find(lr_node* head, char* year) {
 		head->year = year;
 		head->stops = 0;
 		head->next = malloc(sizeof(lr_node));
+		head->next->year = 0;
 	}
 	if (strcmp(head->year, year) == 0) {
 		return head;
@@ -47,7 +48,7 @@ void print_list(lr_node* head) {
 	if (head->year == 0) {
 		return;
 	}
-	printf("%s had %i stops",(head->year,head->stops));
+	printf("%s had %i stops",head->year,head->stops);
 	print_list(head->next);
 }
 
@@ -59,10 +60,11 @@ int main(int argc, char** argv) {
 
 	FILE * f;
 	lr_node* out_list = malloc(sizeof(lr_node));
+	out_list->year = 0;
 	lr_node* node;
 	char* year;
 	//below taken from https://stackoverflow.com/questions/3501338/c-read-file-line-by-line
-	char* line = 0;
+	char* line = NULL;
 	size_t len = 0;
 	ssize_t read;
 
