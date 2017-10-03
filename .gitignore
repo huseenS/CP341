@@ -1,1 +1,8 @@
-/.metadata/
+/.metadata
+**/Notes/
+**.project
+**Traffic_Violations.csv
+**traffic_c.exe
+**.settings/
+**/debug/
+**.gitignore
