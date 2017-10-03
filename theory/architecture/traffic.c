@@ -32,11 +32,10 @@ char* parse_line(char* line) {
 	char* years = malloc(sizeof(char) * 5);
 	line = line + 6; //6-10
 	strncpy(years,line, 4); //copy dates to years
-
 	//return bogus year if data doesn't convert
 	long year;
 	char* end;
-	year = strtol(years, &end, 4);
+	year = strtol(years, &end, 10);
 	if (year > 0) {
 		return years;
 	} else {
