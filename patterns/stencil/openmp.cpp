@@ -103,7 +103,8 @@ void apply_stencil(const int radius, const double stddev, const int rows, const 
     double prewY[3*3];
     prewittX_kernel(3,3,prewY);
     prewittY_kernel(3,3,prewY);
-    double intensity;
+    double* intensity = (double*) calloc(rows*cols, sizeof(double));
+;
     // For each pixel in the image...
     #pragma omp parallel for
     for(int i = 0; i < rows; ++i) {
@@ -120,31 +121,38 @@ void apply_stencil(const int radius, const double stddev, const int rows, const 
                         out[out_offset].red   += kernel[k_offset] * in[in_offset].red;
                         out[out_offset].green += kernel[k_offset] * in[in_offset].green;
                         out[out_offset].blue  += kernel[k_offset] * in[in_offset].blue;
-                        intensity = (in[in_offset].red + in[in_offset].green + in[in_offset].blue)/3.0;
                     }	
                 }
             }
+            intensity[out_offset] = (in[out_offset].red + in[out_offset].green + in[out_offset].blue)/3.0;
         }
     }
 
 double* intensity2 = (double*) calloc(rows*cols, sizeof(double));
+double* yEdge = (double*) calloc(rows*cols, sizeof(double));
+double* xEdge = (double*) calloc(rows*cols, sizeof(double));
 #pragma omp parallel for
     for(int i = 0; i < rows; ++i) {
         for(int j = 0; j < cols; ++j) {
             const int out_offset = i + (j*rows);
-            // ...apply the template centered on the pixel...
-            for(int x = i - radius, kx = 0; x <= i + radius; ++x, ++kx) {
-                for(int y = j - radius, ky = 0; y <= j + radius; ++y, ++ky) {
+            // ...apply the template centered on the pixel...3.
+
+            for(int x = i - 1, kx = 0; x <= i + 1; ++x, ++kx) {
+                for(int y = j - 1, ky = 0; y <= j + 1; ++y, ++ky) {
                     // ...and skip parts of the template outside of the image
                     if(x >= 0 && x < rows && y >= 0 && y < cols) {
                         // Acculate intensities in the output pixel
                         const int in_offset = x + (y*rows);
-                        const int k_offset = kx + (ky*dim);
+                        const int k_offset = kx + (ky*3);
                         out[out_offset].red   += kernel[k_offset] * in[in_offset].red;
                         out[out_offset].green += kernel[k_offset] * in[in_offset].green;
                         out[out_offset].blue  += kernel[k_offset] * in[in_offset].blue;
-                        intensity2[out_offset] = sqrt(pow(intensity* prewX[k_offset],2) + pow(intensity * prewY[k_offset],2));
-                    }	    
+                        yEdge[out_offset] += (intensity[out_offset]* prewX[k_offset]);
+                        xEdge[out_offset] += (intensity[out_offset] * prewY[k_offset]);
+                    }
+
+                    //square root
+                    intensity2[out_offset] = sqrt(xEdge[out_offset] * xEdge[out_offset] + yEdge[out_offset] * yEdge[out_offset]);
 		            out[out_offset].red = intensity2[out_offset];
                     out[out_offset].green = intensity2[out_offset];
                     out[out_offset].blue = intensity2[out_offset];
