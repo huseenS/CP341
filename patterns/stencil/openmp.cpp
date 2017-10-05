@@ -103,8 +103,7 @@ void apply_stencil(const int radius, const double stddev, const int rows, const 
     double prewY[3*3];
     prewittX_kernel(3,3,prewY);
     prewittY_kernel(3,3,prewY);
-    double* intensity1 = (double*) calloc(rows*cols, sizeof(double));
-
+    double intensity;
     // For each pixel in the image...
     #pragma omp parallel for
     for(int i = 0; i < rows; ++i) {
@@ -121,7 +120,7 @@ void apply_stencil(const int radius, const double stddev, const int rows, const 
                         out[out_offset].red   += kernel[k_offset] * in[in_offset].red;
                         out[out_offset].green += kernel[k_offset] * in[in_offset].green;
                         out[out_offset].blue  += kernel[k_offset] * in[in_offset].blue;
-                        intensity1[in_offset] = (in[in_offset].red + in[in_offset].green + in[in_offset].blue)/3.0;	
+                        intensity = (in[in_offset].red + in[in_offset].green + in[in_offset].blue)/3.0;
                     }	
                 }
             }
@@ -144,15 +143,15 @@ double* intensity2 = (double*) calloc(rows*cols, sizeof(double));
                         out[out_offset].red   += kernel[k_offset] * in[in_offset].red;
                         out[out_offset].green += kernel[k_offset] * in[in_offset].green;
                         out[out_offset].blue  += kernel[k_offset] * in[in_offset].blue;
-                        intensity2[out_offset] = sqrt(pow(intensity1[in_offset] * prewX[k_offset],2) + pow(intensity1[in_offset] * prewY[k_offset],2));   
+                        intensity2[out_offset] = sqrt(pow(intensity* prewX[k_offset],2) + pow(intensity * prewY[k_offset],2));
                     }	    
-		    out[out_offset].red = intensity2[out_offset];
+		            out[out_offset].red = intensity2[out_offset];
                     out[out_offset].green = intensity2[out_offset];
                     out[out_offset].blue = intensity2[out_offset];
                 }
-	    }
+            }
         }
-}
+    }
 }
 int main( int argc, char* argv[] ) {
 
